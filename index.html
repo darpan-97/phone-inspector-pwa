@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/pwa-512.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0f14" />
+  <title>Phone Inspector | Advanced Validation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div id="app">
+    <header>
+      <div class="logo-container">
+        <div class="logo-blob"></div>
+        <img src="/pwa-512.png" alt="Phone Inspector" class="main-logo" id="logo-img">
+      </div>
+      <h1>Phone <span>Inspector</span></h1>
+      <p class="subtitle">Global phone number validation & intelligence</p>
+      <div id="home-hint" class="home-badge">
+        <span>Default Local:</span> <strong id="current-home">IE</strong>
+      </div>
+    </header>
+
+    <main class="glass-card">
+      <div class="input-group">
+        <div class="select-wrapper">
+          <select id="region">
+            <option value="">🌎 Auto</option>
+            <option value="IE">🇮🇪 IE</option>
+            <option value="GB">🇬🇧 GB</option>
+            <option value="US">🇺🇸 US</option>
+            <option value="IN">🇮🇳 IN</option>
+            <option value="DE">🇩🇪 DE</option>
+            <option value="FR">🇫🇷 FR</option>
+            <option value="ES">🇪🇸 ES</option>
+            <option value="IT">🇮🇹 IT</option>
+            <option value="AU">🇦🇺 AU</option>
+          </select>
+        </div>
+        <div class="input-wrapper">
+          <input id="input" type="tel" placeholder="Enter phone number..." autocomplete="tel" />
+          <div class="focus-border"></div>
+        </div>
+      </div>
+
+      <button id="analyze" type="button">
+        <span class="btn-text">Analyze Number</span>
+        <span class="btn-shimmer"></span>
+      </button>
+
+      <div id="results" class="results-container hidden">
+        <div class="status-badge" id="validity-badge">
+          <span class="pulse"></span>
+          <span id="validity-text">Valid</span>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-item">
+            <label>Country</label>
+            <span id="res-country">-</span>
+          </div>
+          <div class="stat-item">
+            <label>Code</label>
+            <span id="res-code">-</span>
+          </div>
+          <div class="stat-item">
+            <label>National</label>
+            <span id="res-national">-</span>
+          </div>
+          <div class="stat-item">
+            <label>Type</label>
+            <span id="res-type">-</span>
+          </div>
+        </div>
+
+        <div class="formatted-output">
+          <label>International Format</label>
+          <div class="copyable-field">
+            <span id="res-international">-</span>
+          </div>
+        </div>
+
+        <button id="details-btn" class="secondary-btn">
+          View Technical Reasoning
+        </button>
+
+        <div class="osint-section">
+          <label>OSINT Digital Footprints using Google Dorks</label>
+          <div class="osint-grid">
+            <button id="dork-global" class="osint-btn">
+              <span>🌎 Global Search</span>
+              <small>Raw & Formatted</small>
+            </button>
+            <button id="dork-social" class="osint-btn">
+              <span>📱 Social Profiles</span>
+              <small>FB, LI, TW, IG</small>
+            </button>
+            <button id="dork-docs" class="osint-btn">
+              <span>📄 Public Docs</span>
+              <small>PDF, XLS, DOC</small>
+            </button>
+            <button id="dork-community" class="osint-btn">
+              <span>🤝 Community Recon</span>
+              <small>Reddit, 800Notes, etc</small>
+            </button>
+            <button id="dork-leak" class="osint-btn">
+              <span>⚠️ Leak Repos</span>
+              <small>Pastebin, Github</small>
+            </button>
+          </div>
+        </div>
+
+        <div class="intelligence-section">
+          <label>External Intelligence</label>
+          <div class="intel-grid">
+            <a href="#" id="intel-ipqs" target="_blank" class="intel-btn">
+              <span>🛡️ Fraud Score</span>
+            </a>
+            <a href="#" id="intel-whocalled" target="_blank" class="intel-btn">
+              <span>👥 User Reports</span>
+            </a>
+            <a href="#" id="intel-skip" target="_blank" class="intel-btn">
+              <span>🚫 Spam Check</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <a href="#" id="call-btn" class="action-btn call">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+              </path>
+            </svg>
+            Call
+          </a>
+          <a href="#" id="wa-btn" class="action-btn whatsapp">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+              </path>
+            </svg>
+            WhatsApp
+          </a>
+          <button id="share-btn" class="action-btn share">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+              <polyline points="16 6 12 2 8 6"></polyline>
+              <line x1="12" y1="2" x2="12" y2="15"></line>
+            </svg>
+            Share
+          </button>
+        </div>
+      </div>
+
+      <div id="error-msg" class="error-container hidden">
+        <p>Please enter a valid phone number specimen.</p>
+      </div>
+    </main>
+
+    <div id="side-panel" class="side-panel hidden">
+      <div class="panel-overlay"></div>
+      <div class="panel-content">
+        <div class="panel-header">
+          <h2>Technical Analysis</h2>
+          <button id="close-panel" aria-label="Close">&times;</button>
+        </div>
+        <div id="verbose-output" class="verbose-list">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Phone Inspector PWA</p>
+    </footer>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
